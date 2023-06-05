@@ -1,23 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import { useList } from './context/list-context';
+
 
 function App() {
+  const {data} = useList();
+  console.log(data);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {data.map((user) => <p key={user.id}>{user.firstName} {user.lastName} {user.email} {user.age}</p>)}
     </div>
   );
 }
